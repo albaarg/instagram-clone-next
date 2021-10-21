@@ -4,7 +4,6 @@ import {
   PlusCircleIcon,
   HeartIcon,
   PaperAirplaneIcon,
-  MenuIcon,
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 
@@ -39,17 +38,15 @@ function Header() {
           </div>
         </div>
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="h-6 w-6" />
-          <MenuIcon className="h-6  md:hidden cursor-pointer" />
-
+          <HomeIcon className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out" />
           <div className="relative">
-            <PaperAirplaneIcon className="h-6 w-6" />
-            <div className="absolute -top-1 -right-2 text-sm w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white">
+            <PaperAirplaneIcon className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out" />
+            <div className="absolute -top-1 -right-1 text-sm w-4 h-4 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white">
               3
             </div>
           </div>
-          <PlusCircleIcon className="h-6 w-6" />
-          <HeartIcon className="h-6 w-6" />
+          <PlusCircleIcon className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out" />
+          <HeartIcon className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out" />
           <img
             src="/img/profile.jpg"
             alt="profile"
