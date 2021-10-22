@@ -7,21 +7,33 @@ import {
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtom";
 
 function Header() {
   const { data: session } = useSession();
+  const [open, setOpen] = useRecoilState(modalState);
+  const router = useRouter();
 
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6x1 mx-5 lg:mx-auto">
-        <div className="relative hidden lg:inline-grid w-24 cursor-pointer m-3">
+        <div
+          onClick={() => router.push("/")}
+          className="relative hidden lg:inline-grid w-24 cursor-pointer m-3"
+        >
           <Image
             src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
             layout="fill"
             objectFit="contain"
           />
         </div>
-        <div className="relative w-16 lg:hidden flex-shrink-0 cursor-pointer">
+        <div
+          onClick={() => router.push("/")}
+          className="relative w-16 lg:hidden flex-shrink-0 cursor-pointer
+        "
+        >
           <Image
             src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
             layout="fill"
@@ -41,7 +53,10 @@ function Header() {
           </div>
         </div>
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out" />
+          <HomeIcon
+            onClick={() => router.push("/")}
+            className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out"
+          />
           {session ? (
             <>
               <div className="relative">
@@ -50,7 +65,10 @@ function Header() {
                   3
                 </div>
               </div>
-              <PlusCircleIcon className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out" />
+              <PlusCircleIcon
+                onClick={() => setOpen(true)}
+                className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out"
+              />
               <HeartIcon className="h-6 w-6 hover:scale-110 transition transform duration-200 ease-out" />
               <img
                 onClick={signOut}
